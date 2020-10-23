@@ -19,9 +19,9 @@ lcd = CharLCD(i2c_expander='PCF8574', address=0x27, port=1,
               auto_linebreaks=False,
               backlight_enabled=True)
 
-write_to_lcd(lcd, framebuffer, 16)
+write_to_lcd(lcd, framebuffer, 15)
 
-long_string = '                This string is too long to fit                '
+long_string = ' This string is too long to fit  '
 
 def loop_string(string, lcd, framebuffer, row, num_cols, delay=0.2):
     padding = ' ' * num_cols
@@ -32,4 +32,4 @@ def loop_string(string, lcd, framebuffer, row, num_cols, delay=0.2):
         time.sleep(delay)
 
 while True:
-    loop_string(long_string, lcd, framebuffer, 1, 16)
+    loop_string(long_string, lcd, framebuffer, 1, 15)
