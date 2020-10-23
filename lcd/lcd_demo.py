@@ -7,4 +7,12 @@ lcd = CharLCD(i2c_expander='PCF8574', address=0x27, port=1,
               auto_linebreaks=True,
               backlight_enabled=True)
 
-lcd.write_string('Hello world')
+lines = [
+  "Testing...",
+  "It works!"
+]
+
+for line in lines:
+  if len(line) > 16:
+    print(f"The message \'{line}\' is too long to display!")
+  lcd.write_string(line)
