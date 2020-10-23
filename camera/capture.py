@@ -2,22 +2,34 @@ import cv2
 import os
 import time
 import datetime
+import sys
 
 
 cap = cv2.VideoCapture(0)
 start = datetime.datetime.now()
 
-TIME_DELAY = 1
+if len(sys.argv) == 2:
+  TIME_DELAY = int(sys.argv[1])
+else:
+  TIME_DELAY = 5
 
 os.chdir('frames')
 FRAME_FOLDER = start.strftime('%Y-%m-%d (%H.%M %p)')
-os.mkdir(FRAME_FOLDER)
+try:
+  os.mkdir(FRAME_FOLDER)
+except:
+  FRAME_FOLDER += '2'
+  os.mkdir(FRAME_FOLDER)
+
 os.chdir(FRAME_FOLDER)
 
+frame_counter = 1
 while(True):
   ret, img = cap.read()
   ts = datetime.datetime.now()
   cv2.imwrite(ts.strftime('%Y-%m-%d (%H.%M.%S %p).jpg'), img)
+  print(f'{ts}: Generated {frame_counter} frames\r', end="")
+  frame_counter += 1
 
   time.sleep(TIME_DELAY)
 
