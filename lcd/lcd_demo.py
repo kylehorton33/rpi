@@ -8,7 +8,7 @@ lcd = CharLCD(i2c_expander='PCF8574', address=0x27, port=1,
               backlight_enabled=True)
 
 lines = [
-  "Testing...",
+  "Testing...\n",
   "It works!"
 ]
 
