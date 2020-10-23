@@ -28,46 +28,55 @@ def loop_string(string, lcd, framebuffer, row, num_cols, delay=0.2):
         write_to_lcd(lcd, framebuffer, num_cols)
         time.sleep(delay)
 
+def get_audio():
+  print("getting audio...")
+  with mic as source:
+    r.adjust_for_ambient_noise(source)
+    audio = r.listen(source)
+
+  response = {
+    "success" : True,
+    "error" : None,
+    "transcription" : None
+  }
+
+  try:
+    response["transcription"] = r.recognize_google(audio)
+    return response["transcription"]
+  except sr.RequestError:
+    # API was unreachable or unresponsive
+    response["success"] = False
+    response["error"] = "API unavailable"
+    return 0
+  except sr.UnknownValueError:
+    # speech was unintelligible
+    response["error"] = "Unable to recognize speech"
+    return 0
+
+
+  print(response)
+
 framebuffer = [
-    'Press Enter to Record...',
+    'Recorded:',
     '',
 ]
 
-write_to_lcd(lcd, framebuffer, 15)
+while(True):
+  lcd.clear()
+  lcd.cursor_pos(0,0)
+  lcd.write_string("Press Enter...")
 
-long_string = None
+  entry = input("")
+  if entry:
+    lcd.clear()
+    lcd.cursor_pos(0,0)
+    lcd.write_string("Recording...")
 
-entry = input("")
-if entry:
-  framebuffer[0] = "Recording..."
+    response = get_audio()
+    if response:
+      loop_string(long_string, lcd, framebuffer, 1, 15)
 
-
-
-while True:
-    loop_string(long_string, lcd, framebuffer, 1, 15)
-
-
-
-print("listening...")
-with mic as source:
-  r.adjust_for_ambient_noise(source)
-  audio = r.listen(source)
-
-response = {
-  "success" : True,
-  "error" : None,
-  "transcription" : None
-}
-
-try:
-  response["transcription"] = r.recognize_google(audio)
-except sr.RequestError:
-  # API was unreachable or unresponsive
-  response["success"] = False
-  response["error"] = "API unavailable"
-except sr.UnknownValueError:
-  # speech was unintelligible
-  response["error"] = "Unable to recognize speech"
+    entry = None
 
 
-print(response)
+
