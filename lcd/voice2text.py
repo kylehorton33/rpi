@@ -1,6 +1,10 @@
 from RPLCD.i2c import CharLCD
 import time
 import speech_recognition as sr
+import sys
+
+# Hide Errors
+sys.tracebacklimit = 0
 
 r = sr.Recognizer()
 mic = sr.Microphone()
@@ -47,14 +51,14 @@ def get_audio():
     # API was unreachable or unresponsive
     response["success"] = False
     response["error"] = "API unavailable"
+    print(response)
     return 0
   except sr.UnknownValueError:
     # speech was unintelligible
     response["error"] = "Unable to recognize speech"
+    print(response)
     return 0
 
-
-  print(response)
 
 framebuffer = [
     'Recorded:',
@@ -73,6 +77,7 @@ while(True):
     lcd.write_string("Recording...")
 
     response = get_audio()
+    print(response)
     if response:
       loop_string(response, lcd, framebuffer, 1, 15)
 
