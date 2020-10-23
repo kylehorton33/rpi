@@ -63,18 +63,18 @@ framebuffer = [
 
 while(True):
   lcd.clear()
-  lcd.cursor_pos(0,0)
-  lcd.write_string("Press Enter...")
+  lcd.cursor_pos = (0,0)
+  lcd.write_string("Press r+Enter...")
 
   entry = input("")
-  if entry:
+  if entry == 'r':
     lcd.clear()
-    lcd.cursor_pos(0,0)
+    lcd.cursor_pos = (0,0)
     lcd.write_string("Recording...")
 
     response = get_audio()
     if response:
-      loop_string(long_string, lcd, framebuffer, 1, 15)
+      loop_string(response, lcd, framebuffer, 1, 15)
 
     entry = None
 
