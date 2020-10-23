@@ -9,8 +9,9 @@ lcd = CharLCD(i2c_expander='PCF8574', address=0x27, port=1,
               backlight_enabled=True)
 
 while(True):
+  lcd.clear()
   lcd.cursor_pos = (0,0)
-  lcd.write_string("Enter something")
+  lcd.write_string("Say something")
   lcd.cursor_pos = (1,0)
   lcd.cursor_mode = 'blink'
   entry = input()
