@@ -13,10 +13,12 @@ def write_to_lcd(lcd, framebuffer, num_cols):
         lcd.write_string(row.ljust(num_cols)[:num_cols])
         lcd.write_string('\r\n')
 
-lcd = CharLCD(pin_rs=36, pin_e=38, pins_data=[31, 33, 35, 37],
-              numbering_mode=GPIO.BOARD,
+lcd = CharLCD(i2c_expander='PCF8574', address=0x27, port=1,
               cols=16, rows=2, dotsize=8,
-              auto_linebreaks=True, compat_mode=True)
+              charmap='A02',
+              auto_linebreaks=False,
+              backlight_enabled=True)
+
 write_to_lcd(lcd, framebuffer, 16)
 
 long_string = '                This string is too long to fit                '
