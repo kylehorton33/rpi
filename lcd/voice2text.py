@@ -2,6 +2,7 @@ from RPLCD.i2c import CharLCD
 import time
 import speech_recognition as sr
 import sys
+import datetime
 
 # Hide Errors
 sys.tracebacklimit = 0
@@ -80,6 +81,8 @@ while(True):
     print(response)
     if response:
       loop_string(response, lcd, framebuffer, 1, 15)
+      with open('logs/audio.txt','a') as f:
+        f.write(f'{datetime.datetime.now()},{response}\n')
 
     entry = None
 
