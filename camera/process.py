@@ -29,3 +29,4 @@ for folder in folders:
     writer.write(frame)
 
   writer.release()
+  os.chdir('frames')
