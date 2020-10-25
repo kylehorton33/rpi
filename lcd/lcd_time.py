@@ -1,6 +1,7 @@
 # https://rplcd.readthedocs.io/en/latest/getting_started.html
 from RPLCD.i2c import CharLCD
 import datetime
+import time
 
 ## Pinout
 # GND - Pin 6
@@ -19,6 +20,9 @@ lcd.write_string("Current Time:")
 
 while(True):
   now = datetime.datetime.now()
+  date_string = now.strftime("%b-d %H:%M:%S")
+  time_string = now.strftime("%H:%M:%S.%f")
   lcd.cursor_pos = (1,0)
-  lcd.write_string(now.strftime("%b-%d %H:%M:%S"))
+  lcd.write_string(time_string)
+  time.sleep(0.1)
 
