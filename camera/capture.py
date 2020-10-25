@@ -6,7 +6,9 @@ import sys
 
 
 cap = cv2.VideoCapture(0)
-# if no cap, quit process
+ret, img = cap.read()
+if not ret:
+  exit()
 
 start = datetime.datetime.now()
 
