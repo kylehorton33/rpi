@@ -14,7 +14,7 @@ TARGET_LENGTH = 15
 for folder in folders:
   files = os.listdir(folder)
   os.chdir(folder)
-  sorted_files = sorted(files, key=os.path.getmtime)
+  sorted_files = sorted(files)
   os.chdir('../..')
   file_name = f'video/{folder}.avi'
   print(f'Making video: {file_name}')
