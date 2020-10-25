@@ -18,6 +18,7 @@ lcd.cursor_pos = (0,0)
 lcd.write_string("Current Time:")
 
 while(True):
+  now = datetime.datetime.now()
   lcd.cursor_pos = (1,0)
-  lcd.write_string(datetime.datetime.now())
+  lcd.write_string(now.strftime("%b-%d %H:%M:%S"))
 
