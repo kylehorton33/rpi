@@ -6,6 +6,8 @@ import sys
 
 
 cap = cv2.VideoCapture(0)
+# if no cap, quit process
+
 start = datetime.datetime.now()
 
 if len(sys.argv) == 2:
