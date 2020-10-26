@@ -1,17 +1,22 @@
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
+import datetime
 
 reader = SimpleMFRC522()
+
+users = {
+  148475360341: "user1",
+  727376181428: "user2",
+}
 
 while(True):
   print("scan badge to login")
   try:
           id, text = reader.read()
-          if id == 148475360341:
-            print("user1")
-          else if id == 727376181428:
-            print("user2")
-          else if id:
+          now = datetime.datetime.now()
+
+          if id in users:
+            print(f"Scanned {users[id]} at {now}")
+          elif id:
             print("user not recognized")
-  finally:
-          GPIO.cleanup()
+  
