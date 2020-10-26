@@ -6,8 +6,8 @@ import time
 reader = SimpleMFRC522()
 
 users = {
-  148475360341: "user1",
-  727376181428: "user2",
+  148475360341: "kate",
+  727376181428: "kyle",
 }
 
 while(True):
@@ -17,12 +17,13 @@ while(True):
     now = datetime.datetime.now()
 
     if id in users:
-      print(f"Scanned {users[id]} at {now}")
+      print(f"\n\tHello, {users[id]}")
+      print(f"\tScanned {users[id]} at {now}\n")
       time.sleep(2)
     elif id:
-      print("User not recognized")
+      print("\n\tUser not recognized")
       time.sleep(2)
   except:
-    print("something went wrong...")
+    print("\tsomething went wrong...")
     time.sleep(2)
     exit()
