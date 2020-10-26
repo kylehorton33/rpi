@@ -10,9 +10,7 @@ with open('users/users.csv', mode='r') as infile:
     reader = csv.reader(infile)
     users = {rows[0]:rows[1] for rows in reader}
 
-id_ = 0
-
-while not id:
+while(True):
   print("scan badge to login")
   try:
     id_, text = reader.read()
@@ -25,7 +23,7 @@ while not id:
     elif id:
       print("\n\tUser not recognized")
       time.sleep(2)
-    id_ = 0
+
   except:
     print("\tsomething went wrong...")
     time.sleep(2)
