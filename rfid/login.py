@@ -29,4 +29,4 @@ while not id:
   except:
     print("\tsomething went wrong...")
     time.sleep(2)
-    pass
+    GPIO.cleanup()
