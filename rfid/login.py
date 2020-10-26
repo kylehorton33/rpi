@@ -28,4 +28,4 @@ while(True):
   except:
     print("\tsomething went wrong...")
     time.sleep(2)
-    exit()
+    pass
