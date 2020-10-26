@@ -24,7 +24,7 @@ while(True):
       print("\n\tUser not recognized")
       time.sleep(2)
 
-  except:
+  finally:
     print("\tsomething went wrong...")
     time.sleep(2)
     GPIO.cleanup()
