@@ -12,10 +12,10 @@ users = {
 while(True):
   print("scan badge to login")
   try:
-          id, text = reader.read()
-          now = datetime.datetime.now()
+    id, text = reader.read()
+    now = datetime.datetime.now()
 
-          if id in users:
-            print(f"Scanned {users[id]} at {now}")
-          elif id:
-            print("user not recognized")
+    if id in users:
+      print(f"Scanned {users[id]} at {now}")
+    elif id:
+      print("User not recognized")
