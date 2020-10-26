@@ -2,10 +2,11 @@ import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
 import datetime
 import time
+import csv
 
 reader = SimpleMFRC522()
 
-import csv
+
 
 with open('users/users.csv', mode='r') as infile:
     reader = csv.reader(infile)
