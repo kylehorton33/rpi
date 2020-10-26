@@ -9,7 +9,6 @@ try:
   id, text = reader.read()
   now = datetime.datetime.now()
 
-  
 
 except:
   print("\tsomet
