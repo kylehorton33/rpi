@@ -25,7 +25,7 @@ while(True):
     elif id:
       print("\n\tUser not recognized")
       time.sleep(2)
-  except:
+  else:
     print("\tsomething went wrong...")
     time.sleep(2)
     pass
