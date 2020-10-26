@@ -5,10 +5,12 @@ import time
 
 reader = SimpleMFRC522()
 
-users = {
-  148475360341: "kate",
-  727376181428: "kyle",
-}
+import csv
+
+with open('users/users.csv', mode='r') as infile:
+    reader = csv.reader(infile)
+    users = {rows[0]:rows[1] for rows in reader}
+
 
 while(True):
   print("scan badge to login")
