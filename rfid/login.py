@@ -4,13 +4,14 @@ import datetime
 import time
 import csv
 
-reader = SimpleMFRC522()
+
 
 with open('users/users.csv', mode='r') as infile:
     csv_reader = csv.reader(infile)
     users = {int(rows[0]):rows[1] for rows in csv_reader}
 
 while(True):
+  reader = SimpleMFRC522()
   print("scan badge to login")
   try:
     id_, text = reader.read()
@@ -25,6 +26,5 @@ while(True):
       time.sleep(2)
 
   finally:
-    print("\tsomething went wrong...")
-    time.sleep(2)
+    print("\tResetting RFID reader...")
     GPIO.cleanup()
