@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
 import datetime
+import time
 
 reader = SimpleMFRC522()
 
@@ -17,8 +18,11 @@ while(True):
 
     if id in users:
       print(f"Scanned {users[id]} at {now}")
+      time.sleep(2)
     elif id:
       print("User not recognized")
+      time.sleep(2)
   except:
     print("something went wrong...")
+    time.sleep(2)
     exit()
