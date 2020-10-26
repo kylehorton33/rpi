@@ -1,18 +1,17 @@
-import RPi.GPIO as GPIO
-from mfrc522 import SimpleMFRC522
+#import RPi.GPIO as GPIO
+#from mfrc522 import SimpleMFRC522
 import datetime
 import time
 import csv
 
 reader = SimpleMFRC522()
 
-
-
 with open('users/users.csv', mode='r') as infile:
     reader = csv.reader(infile)
     users = {rows[0]:rows[1] for rows in reader}
 
 id_ = 0
+
 while not id:
   print("scan badge to login")
   try:
@@ -26,8 +25,8 @@ while not id:
     elif id:
       print("\n\tUser not recognized")
       time.sleep(2)
-  id_ = 0
-  else:
+    id_ = 0
+  except:
     print("\tsomething went wrong...")
     time.sleep(2)
     pass
