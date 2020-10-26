@@ -19,3 +19,6 @@ while(True):
       print(f"Scanned {users[id]} at {now}")
     elif id:
       print("User not recognized")
+  except:
+    print("something went wrong...")
+    exit()
