@@ -8,7 +8,7 @@ reader = SimpleMFRC522()
 
 with open('users/users.csv', mode='r') as infile:
     csv_reader = csv.reader(infile)
-    users = {rows[0]:rows[1] for rows in csv_reader}
+    users = {int(rows[0]):rows[1] for rows in csv_reader}
 
 while(True):
   print("scan badge to login")
