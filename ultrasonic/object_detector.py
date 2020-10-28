@@ -50,7 +50,7 @@ if __name__ == '__main__':
             now = datetime.datetime.now()
 
             if dist < DISTANCE_THRESHOLD:
-                print(f"Object Detected at {now}")
+                print(f"OBJECT DETECTED at {now}")
                 print(f"\t- {dist:.2f} cm")
 
             time.sleep(1)
