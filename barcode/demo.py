@@ -1,8 +1,12 @@
+import sys
 
-try:
-  while(True):
-    code = input("Scan Now")
-    print(code)
+fp = open('/dev/hidraw0', 'rb')
+tStr = ''
+while True:
+  buffer = fp.read(8)
+  for c in buffer:
+  if ord(c) > 0:
+  #print ord(c)
+  tStr = tStr + c
 
-except KeyboardInterrupt:
-    print("Program Quit by User")
+print(tStr + "\n")
