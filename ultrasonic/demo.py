@@ -35,7 +35,7 @@ while GPIO.input(ECHO) == 1:
   pulse_end = time.time()
 
 pulse_duration = pulse_end - pulse_start
-distance= round(pulse_duration * 17150, 2)
+distance = round(pulse_duration * 17150, 2) # sonic speed (34300 cm/s) dividied by two (round-trip)
 
 print(f"Distance: {distance} cm")
 
