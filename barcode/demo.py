@@ -5,6 +5,6 @@ tStr = ''
 while True:
   buffer = fp.read(8)
   for c in buffer:
-    tStr = tStr + c
+    tStr = tStr + str(c)
 
 print(tStr + "\n")
